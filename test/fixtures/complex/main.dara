@@ -5,7 +5,8 @@ extends Source;
 model Config {
   protocol: string(maxLength= 50, pattern= 'pattern'),
   importConfig: Source.Config,
-  query: string
+  query: string,
+  complexList: [[string]]
 }
 type @protocol = string
 type @pathname = string
@@ -13,7 +14,7 @@ type @endpointMap = map[string]string
 type @source = Source
 type @boolVirtual = boolean;
 
-init(config: Source.Config, secondParam: string){
+init(config: Source.Config, secondParam: string, config2: Config){
   super(config, secondParam);
   @protocol = config.protocol;
   @pathname = secondParam;
